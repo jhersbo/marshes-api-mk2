@@ -15,6 +15,10 @@ app.use(cors({
     credentials: true,
 }))
 
+//controllers
+app.use('/users', require('./controllers/users'))
+app.use('/scores', require('./controllers/scores'))
+
 app.get('/', async (req: any, res: { send: (arg0: unknown) => void })=>{
     try{
         res.send('Home')
