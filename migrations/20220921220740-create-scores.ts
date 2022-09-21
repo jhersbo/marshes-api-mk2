@@ -10,10 +10,6 @@ module.exports = {
       time: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      user_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
       }
     });
   },
