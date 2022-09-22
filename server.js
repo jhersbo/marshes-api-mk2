@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-import cookieSession from 'cookie-session'
+const cookieSession = require('cookie-session')
 const cors = require('cors')
 
 app.use(cookieSession({
@@ -10,16 +10,16 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000
 }))
 
-app.use(cors({
-    origin: `${process.env.CLIENT_URL}`, 
-    credentials: true,
-}))
+// app.use(cors({
+//     origin: `${process.env.CLIENT_URL}`, 
+//     credentials: true,
+// }))
 
 //controllers
 app.use('/users', require('./controllers/users'))
 app.use('/scores', require('./controllers/scores'))
 
-app.get('/', async (req: any, res: { send: (arg0: unknown) => void })=>{
+app.get('/', async (req, res)=>{
     try{
         res.send('Home')
     }
