@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface: queryInterface_user_id, Sequelize: Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.addColumn('scores', 'user_id', {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -17,7 +17,7 @@ module.exports = {
     })
   },
 
-  async down (queryInterface: queryInterface_user_id, Sequelize: Sequelize) {
+  async down (queryInterface, Sequelize) {
     return await queryInterface.removeColumn('scores', 'user_id', {})
   }
 };
