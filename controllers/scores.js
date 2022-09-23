@@ -1,6 +1,7 @@
-let scoresRouter = require('express').Router()
+let router = require('express').Router()
 let db = require('../models')
 let { scores, users } = db
+const { Op } = require("sequelize");
 
 
 //get users' previous scores
@@ -9,21 +10,13 @@ let { scores, users } = db
 //dont need to delete ever?
 
 //previous scores
-scoresRouter.get('/', async (req, res)=>{
+router.get('/', async (req, res)=>{
     try{
-        let foundScores = await scores.findAll({
-            where: {
-                user_id: req.body.user_id
-            },
-        })
-        if(foundScores){
-            res.status(200).json(foundScores)
-        }else{
-            res.status(200).json("user has no scores")
-        }
+        let foundScores = await scores.findAll()
+        res.json(foundScores)
     }catch(err){
         res.status(500).json({error_message: err, test: "sumpin wrong"})
     }
 })
 
-module.exports = scoresRouter
+module.exports = router

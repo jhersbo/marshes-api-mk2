@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ scores }) {
       this.hasMany(scores, {
         foreignKey: "user_id",
-        as: "user-scores"
+        as: "users-scores"
       })
     }
   }
